@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   get 'schools/new'
   resources :schools
+  resources :teachers
 
   root 'schools#new'
   namespace :api do
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
       get 'schools' => 'schools#index'
       get 'teachers' => 'teachers#index'
       get 'schools/:id' => 'schools#show'
+      get 'schools/:id/teachers' => 'teachers#index'
     end
   end
 end

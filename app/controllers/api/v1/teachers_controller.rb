@@ -2,9 +2,11 @@ module Api
 module V1
 class TeachersController < BaseController
 before_filter :parse_pagination_params, only: :index
+
 def index
 @proc_code = Proc.new do
-@data = Teacher.where("school_id = 12345").order("name asc").page(@current_page).per(@per_page).all
+@school = School.find(params[:id])
+@data = Teacher.where("school_id = ?", @school.id)
 @success = true
 @errors = {}
 end
