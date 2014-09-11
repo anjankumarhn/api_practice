@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
       get 'schools' => 'schools#index'
       get 'teachers' => 'teachers#index'
+      get 'schools/:id' => 'schools#show'
     end
   end
 end
