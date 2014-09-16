@@ -1,11 +1,8 @@
 class TeachersController < ApplicationController
 
-
   def new
     @teacher = Teacher.new
   end
-
-
 
   def create
     @teacher = Teacher.new(teacher_params)
@@ -18,7 +15,6 @@ class TeachersController < ApplicationController
   end
 
   private
-
   def teacher_params
     params.require(:teacher).permit(:name, :school_id )
   end

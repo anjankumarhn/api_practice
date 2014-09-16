@@ -1,11 +1,8 @@
 class SchoolsController < ApplicationController
 
-
   def new
     @school = School.new
   end
-
-
 
   def create
     @school = School.new(school_params)
@@ -18,7 +15,6 @@ class SchoolsController < ApplicationController
   end
 
   private
-
   def school_params
     params.require(:school).permit(:name, :phone, :address,:description, :status )
   end

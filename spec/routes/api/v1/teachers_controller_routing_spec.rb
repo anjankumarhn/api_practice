@@ -1,4 +1,4 @@
-require "rails_helper"
+  require "rails_helper"
 require "spec_helper"
 describe Api::V1::SchoolsController, :type => :controller do
   describe "routing" do
