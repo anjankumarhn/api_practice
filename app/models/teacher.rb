@@ -1,7 +1,10 @@
 class Teacher < ActiveRecord::Base
+  attr_accessible :school_id
   belongs_to :school
 
-  validates :name, :presence => true,:format => /[a-zA-Z]/
+  validates :name, :presence => true
+  validates :school, :associated => true
   validates :school_id, :presence => true
+
 
 end

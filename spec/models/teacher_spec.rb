@@ -2,23 +2,55 @@ require "rails_helper"
 require 'spec_helper'
 
 RSpec.describe Teacher, :type => :model do
-  before(:each) do
-    FactoryGirl.create(:teacher).should be_valid
-    @teacher = FactoryGirl.build(:teacher)
+
+  let(:teacher) {FactoryGirl.build(:teacher)}
+
+  context "Factory teacher" do
+    it "should validate the school factories" do
+      expect(FactoryGirl.build(:teacher).valid?).to be true
+    end
   end
-  it "should pass a valid and presence of name and school_id" do
-    @teacher.name = "name"
-    @teacher.school_id="12345"
-    expect(@teacher).to be_valid
+
+  describe "name" do
+    it "should require the teacher name before create" do
+      teacher.name =""
+      teacher.valid?
+      expect(teacher).to be_invalid
+      expect(teacher.errors[:name].size).to be 1
+
+      teacher.name = nil
+      teacher.valid?
+      expect(teacher).to be_invalid
+      expect(teacher.errors[:name].size).to be 1
   end
-  it "should not pass a invalid name" do
-    @teacher.name = "55456"
-    @teacher.school_id="jhbh"
-    expect(@teacher).not_to be_valid
+
+   it "should accept valid school name on create" do
+      teacher.name = "name"
+      teacher.valid?
+      expect(teacher).to be_valid
+      expect(teacher.errors[:name].size).to be 0
+    end
   end
-  it "should not be valid without name and school_id" do
-    @teacher.name = nil
-    @teacher.school_id = nil
-    expect(@teacher).not_to be_valid
+
+  describe "school_id" do
+    it "should require the school id before create" do
+      teacher.school_id =""
+      teacher.valid?
+      expect(teacher).to be_invalid
+      expect(teacher.errors[:school_id].size).to be 1
+
+      teacher.school_id = nil
+      teacher.valid?
+      expect(teacher).to be_invalid
+      expect(teacher.errors[:school_id].size).to be 1
+    end
+
+    it "should accept valid school id on create" do
+      teacher.school_id = "12345"
+      teacher.valid?
+      expect(teacher).to be_valid
+      expect(teacher.errors[:school_id].size).to be 0
+    end
   end
+
 end
