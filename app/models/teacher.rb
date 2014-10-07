@@ -1,5 +1,5 @@
 class Teacher < ActiveRecord::Base
-  attr_accessible :school_id
+  attr_accessible :name, :school_id
   belongs_to :school
 
   validates :name, :presence => true

@@ -6,7 +6,7 @@ class TeachersController < ApplicationController
 
   def create
     @teacher = Teacher.new(teacher_params)
-
+      binding.pry
     if @teacher.save
       redirect_to root_path
     else

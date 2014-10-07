@@ -2,7 +2,7 @@ development:
   adapter: postgresql
   encoding: unicode
   reconnect: false
-  database: api_development
+  database: api2_development
   pool: 5
   username: kiran
   password: db123
@@ -16,7 +16,7 @@ test:
   adapter: postgresql
   encoding: unicode
   reconnect: false
-  database: api_test
+  database: api2_test
   pool: 5
   username: kiran
   password: db123

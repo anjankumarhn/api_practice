@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       get 'teachers' => 'teachers#index'
       get 'schools/:id' => 'schools#show'
       get 'schools/:id/teachers' => 'teachers#index'
+      get 'sign_in' => 'sessions#create'
     end
   end
 end
